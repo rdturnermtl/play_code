@@ -1,0 +1,27 @@
+export HISTFILESIZE=50000
+
+export PIP_REQUIRE_VIRTUALENV=true
+export PYTHONSTARTUP=~/.pythonstartup
+
+alias ll='ls -alF'
+alias la='ls -A'
+c() { cd $1 && ls -aF; }
+mc() { mkdir $1 && cd $1; }
+alias s="git status"
+alias d="git diff"
+alias v="git rev-parse HEAD"
+alias vs="git rev-parse --short HEAD"
+alias c1="git clean -x -i -d"
+alias jn="jupyter notebook"
+alias giturl="git remote show origin"
+
+# Run inside bash command to temp go into another virtual env
+alias checkall='bash -c "source ~/envs/play_py36/bin/activate && pre-commit run --all-files && deactivate"'
+alias lesss='less -S'
+alias rs='echo $?'
+ev() { bash -c "cd ~/envs && virtualenv $1 --python=python3.6" && source ~/envs/$1/bin/activate && pip freeze; }
+sev() { source ~/envs/$1/bin/activate; }
+
+gg() { grep -r --exclude-dir=".git" $1 .; }
+ggi() { grep -r -i --exclude-dir=".git" $1 .; }
+ggh() { grep -i $1 ~/.bash_history | sort | uniq; }
